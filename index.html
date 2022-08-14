@@ -9,7 +9,98 @@
     .wow:first-child {
       visibility: hidden;
     }
+
+	
   </style>
+  <!-- <script type="text/javascript">
+	function Validate(){
+		if(document.myForm.Name.value==""){
+			alert("Please provide your name!");
+			document.myForm.Name.focus();
+			return false;
+		}
+		//Email Validation
+		if(document.myForm.EMail.value==""){
+			alert("Please provide your email id!");
+			document.myForm.EMail.focus();
+			return false;
+		}
+		var str = document.myForm.EMail.value;
+		var len=str.length;
+		var atcount=0;
+		var atpos;
+		var flag=1;
+		
+		for(i=0; i<len; i++){
+			if(str[i]=='@'){
+				atpos=i;
+				atcount++;
+			}
+			if(str[i]==' '){
+				alert("Email address doesn't contain space!");
+				document.myForm.EMail.focus();
+				return false;
+			}
+		}
+		if(atcount!=1 || str[len-1]=='.'|| str[len-2]=='.' || str[atpos+1]=="."){
+			alert("Invalid syntax!");
+			document.myForm.EMail.focus();
+			return false;
+		}
+		for(i=atpos; i<len; i++){
+			if(str[i]=="."){
+				flag=0;
+				break;
+			}
+		}
+		if(flag){
+			alert("Invalid syntax!");
+			document.myForm.EMail.focus();
+			return false;
+		}
+		//End of email validation
+		if(document.myForm.number.value.length!=10 || isNaN(document.myForm.number.value)){
+			alert("Please provide a valid Phone Number!");
+			document.myForm.number.focus();
+			return false;
+		}
+		if(document.myForm.Zip.value=="" ||document.myForm.Zip.value.length !=5){
+			alert("Please provide a zip code in the format #####");
+			document.myForm.Zip.focus();
+			return false;
+		}
+		if(document.myForm.Country.value=="-1"){
+			alert("Please provide your country.");
+			document.myForm.
+			Country.focus();
+			return false;
+		}
+		alert("Submission Successfull!");
+	}
+</script> -->
+
+<script type="text/javascript">
+	const btn = document.getElementById('button');
+
+document.getElementById('form')
+ .addEventListener('submit', function(event) {
+   event.preventDefault();
+
+   btn.value = 'Sending...';
+
+   const serviceID = 'service_nkfnwjk';
+   const templateID = 'template_l0bkpei';
+
+   emailjs.sendForm(serviceID, templateID, this)
+    .then(() => {
+      btn.value = 'Send Email';
+      alert('Sent succesfull!');
+    }, (err) => {
+      btn.value = 'Send Email';
+      alert(JSON.stringify(err));
+    });
+});
+</script>
   
 </head>
 <body>
@@ -263,13 +354,24 @@
      <div class="container">
         <div class="content">
             <div class="box form wow slideInLeft">
-               <form>
-                  <input type="text" placeholder="Enter Name">
-                  <input type="text" placeholder="Enter Email">
-                  <input type="text" placeholder="Enter Mobile">
-                  <textarea placeholder="Enter Message"></textarea>
-                  <button type="submit">Send Message</button>
+               <form id="form">
+                  <input type="text" name="from_name" id="from_name" placeholder="Enter Name">
+                  <input type="email" name="email_id" id="email_id" placeholder="Enter Email">
+                  <input type="text" name="contact_no" id="contact_no" placeholder="Enter Mobile">
+                  <textarea name="message" id="message" placeholder="Enter Message"></textarea>
+				  <input type="submit" id="button" value="Send Email" >
                </form>
+			   <script type="text/javascript"
+				src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+			  
+			  <script type="text/javascript">
+				emailjs.init('dh3aMz-9uRZ7xKjew')
+			  </script>
+
+
+			   
+			  
+			  
             </div>
             <div class="box text wow slideInRight">
                  <h2>Get Connected with Gym</h2>
@@ -278,7 +380,7 @@
                       <ul>
                           <li><span class="fa fa-map-marker"></span> Shop No. 414, PSR Complex, opp. Bank Of Baroda Road</li>
                           <li><span class="fa fa-phone"></span> +91 9538780266</li>
-                          <li><span class="fa fa-envelope"></span> dilshadazam.official@gmail.com</li>
+                          <li><span class="fa fa-envelope"></span> cruisefitblr123@gmail.com</li>
                       </ul>
                   </div>
                   <div class="social">
